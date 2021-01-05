@@ -56,6 +56,8 @@ extends PGSimpleDataSource
 
         String authToken = generator.getAuthToken(request);
 
+        logger.debug("requesting IAM token for authToken {}", authToken);
+
         return super.getConnection(user, authToken);
     }
 }
