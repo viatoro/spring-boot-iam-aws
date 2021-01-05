@@ -21,13 +21,13 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <aws-sdk.version>1.11.600</aws-sdk.version>
+        <aws-sdk.version>2.15.58</aws-sdk.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-rds</artifactId>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>rds</artifactId>
             <version>${aws-sdk.version}</version>
         </dependency>
         <dependency>
