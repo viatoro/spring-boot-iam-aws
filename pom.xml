@@ -27,7 +27,7 @@
     <dependencies>
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
-            <artifactId>rds</artifactId>
+            <artifactId>sts</artifactId>
             <version>${aws-sdk.version}</version>
         </dependency>
         <dependency>
