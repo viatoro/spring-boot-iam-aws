@@ -33,12 +33,18 @@ extends PGSimpleDataSource
         // I'd like to do this in constructor, but it can throw SQLException
         setProperty("ssl", "true");
         setProperty("sslmode", "require");
-        
+
+        DefaultAWSCredentialsProviderChain credentialsProviderChain = new DefaultAWSCredentialsProviderChain();
+        String awsAccessKey = credentialsProviderChain.getCredentials().getAWSAccessKeyId();
+        String awsSecretKey = credentialsProviderChain.getCredentials().getAWSSecretKey();
         logger.debug("requesting IAM token for user {}", user);
+        logger.debug("requesting IAM token for awsAccessKey {}", awsAccessKey);
+        logger.debug("requesting IAM token for awsSecretKey {}", awsSecretKey);
+        logger.debug("requesting IAM token for Region {}", new DefaultAwsRegionProviderChain().getRegion());
 
         // adapted from https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.Connecting.Java.html
         RdsIamAuthTokenGenerator generator = RdsIamAuthTokenGenerator.builder()
-            .credentials(new DefaultAWSCredentialsProviderChain())
+            .credentials(credentialsProviderChain)
             .region((new DefaultAwsRegionProviderChain()).getRegion())
             .build();
 
